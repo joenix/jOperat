@@ -14,6 +14,7 @@ mobile = ~userAgent.indexOf('Mobile') !== 0;
 
 /* The Global Fn */
 function _(options){
+	options = options || {};
 	return this.init( this, this.global(options.global || {}), (delete options.global, options || {}) );
 }
 
@@ -21,7 +22,9 @@ function _(options){
 _.prototype = {
 	// 全局参数设置
 	global: function(options){
-		return {
+		return window.jOperatGlobal || (window.jOperatGlobal = {
+			// 容器: HTMLElement
+			container: options.container && options.container.nodeType === 1 ? options.container : document,
 			// 动作名称: 字符串
 			action: options.action || 'action',
 			// 触发方式: 事件
@@ -30,7 +33,7 @@ _.prototype = {
 			params: options.params || [],
 			// 阻止默认事件: 布尔
 			stop: options.stop === true
-		}
+		});
 	},
 	// 定义静态常量
 	constant: {
@@ -153,13 +156,13 @@ _.prototype = {
 		_.each(_.cache, function(index, event){
 			
 			// 绑定动作于容器
-			_.bind(document, _.evt[event] || event, function(e){
+			_.bind(options.container, _.evt[event] || event, function(e){
 				
 				var element = _.element(e), action = _.action( element, options.action );
 				
 				if( action ){
 					// 重置并获取参数实体
-					action = events[action];
+					action = events[action] || window[action];
 					
 					// 如果参数是Function, 则执行默认动作
 					if( _.isFunction( action ) && event === options.evt ){
@@ -207,59 +210,3 @@ window.jOperat = _;
 ,window.location
 ,window.navigator.userAgent
 );
-
-new jOperat({
-	global: {
-		action: 'action',
-		evt: 'click',
-		params: 'id uid sid'.split(' '),
-		stop: true
-	},
-	A: {
-		setting: {
-			stop: true
-		},
-		exe: function(element, params){
-			console.log('A');
-			console.log(element);
-			console.log(params);
-		}
-	},
-	B: {
-		setting: {
-			evt: 'over',
-			params: 'wid cid sid'.split(' ')
-		},
-		exe: function(element, params){
-			console.log('BB');
-			console.log(element);
-			console.log(params);
-		}
-	},
-	C: {
-		setting: {
-			evt: 'up',
-			params: 'wid'.split(' ')
-		},
-		exe: function(element, params){
-			console.log('CCC');
-			console.log(element);
-			console.log(params);
-		}
-	},
-	D: function(element, params){
-		console.log('DDDD');
-		console.log(element);
-		console.log(params);
-	},
-	E: {
-		setting: {
-			stop: false
-		},
-		exe: function(element, params){
-			console.log('EEEEE');
-			console.log(element);
-			console.log(params);
-		}
-	}
-});
