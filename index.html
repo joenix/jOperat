@@ -187,7 +187,7 @@ code .p{
 	border-style:solid;
 	vertical-align:middle;
 	border-radius:4px;
-	box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+	box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .btn_b{
 	border-color:#357ebd;
@@ -259,6 +259,7 @@ code .p{
 		<section>
 			<a id="222" target="_blank" class="logo" href="http://joenix.com/">JOENIX.COM</a>
 			<span>1000人QQ交流群：<a title="点击加入" href="http://wp.qq.com/wpa/qunwpa?idkey=83b3350f35a3701aa4c82a66478cc6499e50a3202cbd8bbab15ed609d7b11150">165765610</a></span>
+			<span>点击访问：<a href="http://weibo.com/ejoenix/">新浪微博</a></span>
 		</section>
 	</header>
 	<main>
@@ -292,10 +293,11 @@ code .p{
 				</dd>
 			</dl>
 			<dl>
-				<dt><h2>jOperat能在哪些环境运行？</h2></dt>
+				<dt><h2>jOperat的兼容性如何？</h2></dt>
 				<dd>
-					<table width="600">
+					<table width="800">
 						<tr>
+							<th style="width:300px;">事件名称</th>
 							<th>IE</th>
 							<th>Chrome</th>
 							<th>Firefox</th>
@@ -304,11 +306,57 @@ code .p{
 							<th>W3C</th>
 						</tr>
 						<tr>
+							<td>click、dblclick</td>
 							<td class="_2">5.5+</td>
 							<td class="_1">Yes</td>
 							<td class="_1">Yes</td>
 							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+						</tr>
+						<tr>
+							<td>mouseover、mouseout、mousemove</td>
+							<td class="_2">5.5+</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+						</tr>
+						<tr>
+							<td>mousedown、mouseup</td>
+							<td class="_2">5.5+</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+						</tr>
+						<tr>
+							<td>focus、blur</td>
 							<td class="_2">9+</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+						</tr>
+						<tr>
+							<td>change</td>
+							<td class="_2">9+</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+						</tr>
+						<tr>
+							<td>keydown、keyup、keypress<br/>(仅支持表单元素)</td>
+							<td class="_2">5.5+</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
+							<td class="_1">Yes</td>
 							<td class="_1">Yes</td>
 						</tr>
 					</table>
@@ -468,6 +516,12 @@ code .p{
 						</tr>
 					</table>
 				</dd>
+			</dl>
+		</section>
+		<section>
+			<dl>
+				<dt><h2>Joenix说：</h2></dt>
+				<dd>由于jOperat刚完成第一个迭代的开发，所以目前有一些事件尚未完美兼容，如：focusin、focusout、change等，在2.0版本中将对这些事件做完美兼容，请大家继续关注并支持jOperat。</dd>
 			</dl>
 		</section>
 	</main>

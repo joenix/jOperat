@@ -133,6 +133,15 @@ main{
 
 <body>
 <script type="text/javascript">
+// 兼容
+if(!window.console){
+	window.console = {
+		log: function(){
+			alert(arguments[0])
+		}
+	};
+}
+
 new jOperat({
 	global: {
 		container: window.document,
@@ -182,7 +191,7 @@ new jOperat({
 			for(var i in params){
 				x += i + ':' + params[i] + '\n'
 			}
-			alert(x);
+			console.log(x);
 		}
 	},
 	sameInput: {
@@ -192,6 +201,16 @@ new jOperat({
 		exe: function(element, params){
 			document.getElementById('doSame').value = element.value;
 		}
+	},
+	randomNumber: {
+		setting: {
+			evt: 'keyup'
+		},
+		exe: function(element, params){
+			var v = String( Math.floor( Math.random() * 100 ) );
+			
+			element.value = v.substr(0, v.length);
+		}
 	}
 });
 </script>
@@ -199,6 +218,7 @@ new jOperat({
 	<section>
 		<a id="222" target="_blank" class="logo" href="http://joenix.com/">JOENIX.COM</a>
 		<span>1000人QQ交流群：<a title="点击加入" href="http://wp.qq.com/wpa/qunwpa?idkey=83b3350f35a3701aa4c82a66478cc6499e50a3202cbd8bbab15ed609d7b11150">165765610</a></span>
+		<span>点击访问：<a href="http://weibo.com/ejoenix/">新浪微博</a></span>
 	</section>
 </header>
 <main>
@@ -234,6 +254,10 @@ new jOperat({
 		<tr>
 			<td>焦点移出时，数据同步</td>
 			<td><input type="text" action="sameInput"><input type="text" id="doSame" disabled></td>
+		</tr>
+		<tr>
+			<td>键盘弹起时，生成0-99随机数</td>
+			<td><input type="text" action="randomNumber"></td>
 		</tr>
 		<tr>
 			<td>更多示例敬请期待…</td>
